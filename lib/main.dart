@@ -1,43 +1,39 @@
+import 'package:a10drawerformularios0393/productos.dart';
+import 'package:a10drawerformularios0393/ventas.dart';
+import 'package:a10drawerformularios0393/pedidos.dart';
 import 'package:flutter/material.dart';
+import 'package:a10drawerformularios0393/empleado.dart';
+import 'inicio.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  static const String inicio = Inicio.routeName;
+  static const String pedidos = Pedidos.routeName;
+  static const String empleado = Empleado.routeName;
+  static const String productos = Productos.routeName;
+  static const String ventas = Ventas.routeName;
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // Application name
-      title: 'Flutter Hello World',
-      // Application theme data, you can set the colors for the application as
-      // you want
+      debugShowCheckedModeBanner: false,
+      title: 'Ejemplo Drawer Menu',
       theme: ThemeData(
-        // useMaterial3: false,
         primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      // A widget which will be started on application startup
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  final String title;
-  const MyHomePage({super.key, required this.title});  
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        // The title text which will be shown on the action bar
-        title: Text(title),
-      ),
-      body: Center(
-        child: Text(
-          'Hello, World!',
-        ),
-      ),
+      routes: {
+        inicio: (context) => Inicio(),
+        pedidos: (context) => Pedidos(),
+        empleado: (context) => Empleado(),
+        productos: (context) => Productos(),
+        ventas: (context) => Ventas(),
+      },
+      home: Inicio(),
     );
   }
 }
